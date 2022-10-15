@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Movie App Sky</string>
+    <string name="app_name">Sky Movies</string>
     <string name="movie_genre">Genre</string>
-    <string name="movie_search">Search for a movie...</string>
+    <string name="movie_search">Search for a movie</string>
     <string name="movie_title">Movie title</string>
     <string name="movie_img_description">movie banner picture</string>
     <string name="heart_icon_description">heart icon</string>
