@@ -17,21 +17,16 @@ import com.example.movieappsky.presentation.ClickListener
 class MoviesAdapter(
     val context: Context,
     var dataset: MutableList<Movies> = mutableListOf(),
-    var datasetFilter: MutableList<Movies> = mutableListOf(),
     var clickListener: ClickListener? = null
-) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>()
-{
+) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
-
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
-    {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var imgMovie: ImageView? = view.findViewById(R.id.imgMovie)
         var titleMovie: TextView? = view.findViewById(R.id.titleMovie)
         var yearMovie: TextView? = view.findViewById(R.id.yearMovie)
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder
-    {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.movies_items, viewGroup, false)
 
@@ -39,17 +34,15 @@ class MoviesAdapter(
 
         view.setOnClickListener {
             clickListener?.onClickListener(
-                listOf(datasetFilter[viewHolder.adapterPosition]),
+                listOf(dataset[viewHolder.adapterPosition]),
                 viewHolder.adapterPosition
             )
         }
         return viewHolder
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int)
-    {
-        if (dataset[position].poster !== "")
-        {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (dataset[position].poster !== "") {
             holder.imgMovie?.let {
                 Glide.with(context)
                     .load(Constants.BASE_URL_IMAGE.value + dataset[position].poster)
@@ -60,46 +53,37 @@ class MoviesAdapter(
         holder.titleMovie?.text = dataset[position].title
         holder.yearMovie?.text = dataset[position].year
     }
-//
-//    fun updateList(list: MutableList<Movies>) {
-//        dataset = list
-//        notifyDataSetChanged()
-//    }
 
     override fun getItemCount() = dataset.size
 
-    fun getFilter(): Filter = MoviesFilter()
+    fun getFilter(): Filter {
+        return MoviesFilter()
+    }
 
     private inner class MoviesFilter : Filter() {
-        override fun performFiltering(constraint: CharSequence): FilterResults
-        {
-            val searchString = constraint.toString()
+        override fun performFiltering(constraint: CharSequence): FilterResults {
+            val searchString = constraint.toString().lowercase()
             val filterResults = FilterResults()
-            var filteredList: MutableList<Movies> = mutableListOf()
+            val filteredList: MutableList<Movies> = mutableListOf()
             if (searchString.isEmpty()) {
-                datasetFilter = dataset
+                dataset
             }
             else
             {
-                val filteredList: MutableList<Movies> = mutableListOf()
-                for (movies in dataset)
-                {
-                    if (movies.title?.lowercase()?.contains(searchString) == true)
-                    {
-                        filteredList.plus(movies)
+                for (movies in dataset) {
+                    if (movies.title?.lowercase()?.contains(searchString) == true) {
+                        filteredList.add(movies)
                     }
+                    dataset = filteredList
                 }
-                datasetFilter = filteredList
             }
             filterResults.values = filteredList
             return filterResults
         }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            if (results != null && results.count > 0) {
-                datasetFilter = (results.values as List<Movies>).toMutableList()
-                notifyDataSetChanged()
-            }
+            dataset = (results?.values as List<Movies>).toMutableList()
+            notifyDataSetChanged()
         }
     }
 }

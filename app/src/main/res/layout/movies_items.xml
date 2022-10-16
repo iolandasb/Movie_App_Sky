@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cvImage"
-        android:layout_width="260dp"
+        android:layout_width="@dimen/cardview"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small"
         android:layout_marginTop="@dimen/medium"
@@ -19,15 +19,15 @@
         card_view:cardCornerRadius="@dimen/xlarge"
         card_view:cardElevation="@dimen/xsmall">
 
-            <ImageView
-                android:id="@+id/imgMovie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="@string/movie_img_description"
-                tools:src="@drawable/img_reference" />
+        <ImageView
+            android:id="@+id/imgMovie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:contentDescription="@string/movie_img_description"
+            android:focusable="true"
+            tools:src="@drawable/img_reference" />
 
     </androidx.cardview.widget.CardView>
 
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/xsmall"
         android:fontFamily="@font/nunito_sans_regular"
-        android:text="Movie Year"
+        android:text="@string/movie_year"
         android:textColor="@color/movieTitleColor"
         app:layout_constraintEnd_toEndOf="@+id/titleMovie"
         app:layout_constraintStart_toStartOf="@+id/titleMovie"

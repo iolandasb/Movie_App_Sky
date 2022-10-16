@@ -8,23 +8,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="CustomTabTextLayout" parent="TextAppearance.Design.Tab">
-        <item name="android:textAllCaps">false</item>
-        <item name="textAllCaps">false</item>
-        <item name="android:textSize">@dimen/medium_sp</item>
-        <item name="fontFamily">@font/nunito_sans_regular</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="CustomChipColors" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipBackgroundColor">@color/chip_background_color</item>
         <item name="android:textColor">@color/chip_color</item>
-    </style>
-
-    <style name="movieAdditionalInfo">
-        <item name="android:textSize">@dimen/small_sp</item>
-        <item name="fontFamily">@font/nunito_sans_regular</item>
-        <item name="android:textColor">@color/movieInfoTextColor</item>
     </style>
 
     <style name="CustomCardCorners" parent="@style/Widget.MaterialComponents.CardView">

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/medium"
         android:fontFamily="@font/nunito_sans_regular"
-        android:text="@string/movie_genre"
+        android:text="@string/movie_year"
         android:textSize="@dimen/small_sp"
         app:checkedIconEnabled="false"
         style="@style/CustomChipColors"
