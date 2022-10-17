@@ -7,26 +7,4 @@
         <item name="android:textSize">@dimen/medium_sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-
-    <style name="CustomChipColors" parent="Widget.MaterialComponents.Chip.Filter">
-        <item name="chipBackgroundColor">@color/chip_background_color</item>
-        <item name="android:textColor">@color/chip_color</item>
-    </style>
-
-    <style name="CustomCardCorners" parent="@style/Widget.MaterialComponents.CardView">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearance_custom_corners</item>
-    </style>
-
-    <style name="ShapeAppearance_custom_corners" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">32dp</item>
-        <item name="cornerSizeBottomLeft">32dp</item>
-    </style>
-
-    <style name="shapeableImageStyle" parent="">
-        <item name="cornerSizeBottomLeft">40dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeTopLeft">0dp</item>
-        <item name="cornerSizeTopRight">0dp</item>
-    </style>
 </resources>

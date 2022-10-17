@@ -32,8 +32,4 @@ class MoviesRepositoryImpl: MoviesRepository {
                 movieMapper.map(it)
             }
     }
-
-    companion object {
-        private const val BR = "BR"
-    }
 }

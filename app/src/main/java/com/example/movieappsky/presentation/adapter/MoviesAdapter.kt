@@ -23,6 +23,7 @@ class MoviesAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var imgMovie: ImageView? = view.findViewById(R.id.imgMovie)
         var titleMovie: TextView? = view.findViewById(R.id.titleMovie)
+        var genreMovie: TextView? = view.findViewById(R.id.genreMovie)
         var yearMovie: TextView? = view.findViewById(R.id.yearMovie)
     }
 
@@ -51,6 +52,7 @@ class MoviesAdapter(
             }
         }
         holder.titleMovie?.text = dataset[position].title
+        holder.genreMovie?.text = dataset[position].genre
         holder.yearMovie?.text = dataset[position].year
     }
 
@@ -70,7 +72,8 @@ class MoviesAdapter(
             }
             else {
                 for (movies in dataset) {
-                    if (movies.title?.lowercase()?.contains(searchString) == true) {
+                    if (movies.title?.lowercase()?.contains(searchString) == true || movies.genre
+                                ?.lowercase()?.contains(searchString) == true) {
                         filteredList.add(movies)
                     }
                     dataset = filteredList

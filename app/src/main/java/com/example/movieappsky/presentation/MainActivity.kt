@@ -1,15 +1,14 @@
 package com.example.movieappsky.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import com.example.movieappsky.R
 import com.example.movieappsky.databinding.ActivityMainBinding
 import com.example.movieappsky.presentation.adapter.MoviesAdapter
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,18 +22,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         moviesAdapter = MoviesAdapter(context = this)
         moviesViewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
-        binding.rvMovies.adapter = moviesAdapter
-        moviesViewModel.getMovies()
-        observeMovies()
+        setUp()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean
-    {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search_menu, menu)
 
         val search: MenuItem? = menu?.findItem(R.id.itSearch)
         val searchView: SearchView = search?.actionView as SearchView
-        searchView.queryHint = "Search"
+        searchView.queryHint = "Search by title or genre"
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -45,14 +41,18 @@ class MainActivity : AppCompatActivity() {
                     newText
                 }
                 if (newText.equals("")) {
-                    binding.rvMovies.adapter = moviesAdapter
-                    moviesViewModel.getMovies()
-                    observeMovies()
+                    setUp()
                 }
                 return true
             }
         })
         return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun setUp() {
+        binding.rvMovies.adapter = moviesAdapter
+        moviesViewModel.getMovies()
+        observeMovies()
     }
 
     private fun observeMovies() {
