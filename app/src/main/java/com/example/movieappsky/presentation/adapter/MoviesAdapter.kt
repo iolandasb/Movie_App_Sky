@@ -68,8 +68,7 @@ class MoviesAdapter(
             if (searchString.isEmpty()) {
                 dataset
             }
-            else
-            {
+            else {
                 for (movies in dataset) {
                     if (movies.title?.lowercase()?.contains(searchString) == true) {
                         filteredList.add(movies)

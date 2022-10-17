@@ -44,6 +44,11 @@ class MainActivity : AppCompatActivity() {
                 moviesAdapter.getFilter().filter(newText) {
                     newText
                 }
+                if (newText.equals("")) {
+                    binding.rvMovies.adapter = moviesAdapter
+                    moviesViewModel.getMovies()
+                    observeMovies()
+                }
                 return true
             }
         })
@@ -59,7 +64,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
 }
