@@ -2,8 +2,7 @@
 <strong>Movie App Sky</strong>
 
 
-- How the app works:
-##https://youtube.com/shorts/gzNnI-NVgDQ?feature=share
+- How the app works: https://youtube.com/shorts/gzNnI-NVgDQ?feature=share
 
 
 - Notes: Some of the API image links returned "Error 404 - Not Found" as shown in the image below. Therefore, it was necessary to replace them with placeholders.
